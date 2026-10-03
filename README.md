@@ -96,15 +96,21 @@ Simply open `index.html` in any web browser, or use a local static server:
 python -m http.server 8000
 ```
 
-### Deploying to GitHub Pages or Vercel
+### Deploying to Cloudflare Pages
 1. Push all files to your GitHub repository:
    ```bash
    git add -A
    git commit -m "feat: complete wedding invitation website"
    git push origin main
    ```
-2. **Vercel**: Import the GitHub repo — Vercel detects static HTML/CSS/JS with zero configuration required.
-3. **GitHub Pages**: Go to **Repository Settings -> Pages -> Source: Deploy from branch (main / root)**.
+2. In the [Cloudflare Dashboard](https://dash.cloudflare.com/):
+   - Go to **Workers & Pages** -> **Create application** -> **Pages** -> **Connect to Git**.
+   - Select your repository (`wedding`).
+   - Set **Framework preset** to **None**.
+   - Leave **Build command** empty.
+   - Set **Build output directory** to `/` (or leave blank).
+   - Click **Save and Deploy**.
+3. Your wedding website is live globally on Cloudflare's edge network with free HTTPS, lightning-fast CDN caching, and custom domain support!
 
 ---
 
