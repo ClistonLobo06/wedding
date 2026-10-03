@@ -3,57 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roshan &amp; Elvisha — Wedding Invitation | 11 January 2027</title>
+  <title>Roshan &amp; Elvisha — Wedding Invitation | January 11, 2027</title>
   
-  <meta name="description" content="Wedding Invitation of Roshan Lobo &amp; Elvisha Dsouza. Save the Date — Monday, 11 January 2027 at The Grand Palace, Mangalore. Two Hearts • One Journey • Forever Together.">
-  <meta name="keywords" content="Roshan and Elvisha, Wedding Invitation, Save the Date, Royal Wedding, Mangalore">
+  <meta name="description" content="We invite you to the wedding of Roshan Glatvin Lobo &amp; Elvisha Dsouza | Monday, January 11, 2027 | Mother of God Church, Mogarnad. Save The Date &amp; RSVP.">
+  <meta name="keywords" content="Roshan Lobo, Elvisha Dsouza, Wedding Invitation, Mogarnad, Mother of God Church, Save The Date">
   
   <!-- Open Graph / Social Sharing -->
-  <meta property="og:title" content="Roshan &amp; Elvisha — Wedding Invitation">
-  <meta property="og:description" content="Save the Date for the Wedding Celebration of Roshan Lobo &amp; Elvisha Dsouza on Monday, 11 January 2027.">
-  <meta property="og:image" content="images/wedding-card.jpg">
+  <meta property="og:title" content="Roshan &amp; Elvisha | Wedding Invitation">
+  <meta property="og:description" content="We joyfully invite you to the wedding of Roshan &amp; Elvisha on Monday, January 11, 2027 at Mother of God Church, Mogarnad.">
+  <meta property="og:image" content="images/chungdoi_1.jpg">
   <meta property="og:type" content="website">
 
   <!-- Favicon (Royal Monogram) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23580c16' stroke='%23d4af37' stroke-width='4'/><text x='50%' y='63%' font-size='40' font-family='serif' fill='%23d4af37' text-anchor='middle'>R&amp;E</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23511419' stroke='%23C5A584' stroke-width='4'/><text x='50%' y='63%' font-size='38' font-family='serif' fill='%23C5A584' text-anchor='middle'>R&amp;E</text></svg>">
 
-  <!-- Google Fonts: Luxury Calligraphy (Pinyon Script, Alex Brush, Great Vibes, Italianno, Parisienne) & Serif -->
+  <!-- Google Fonts: Viaoda Libre, Lora, EB Garamond, Montserrat, Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Italianno&family=Montserrat:wght@300;400;500;600;700&family=Parisienne&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Viaoda+Libre&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="theme-minimalism-darkred">
 
-  <!-- ================================================================ -->
-  <!-- ===== EDIT WEDDING DETAILS HERE ================================ -->
-  <!-- ================================================================ -->
-  <!-- 1. GROOM NAME:     Roshan Lobo                                   -->
-  <!-- 2. BRIDE NAME:     Elvisha Dsouza                                -->
-  <!-- 3. WEDDING DATE:   Monday, 11 January 2027                       -->
-  <!-- 4. WEDDING TIME:   11:00 AM onwards                              -->
-  <!-- 5. COUNTDOWN ISO:  2027-01-11T11:00:00 (used for live timer)     -->
-  <!-- 6. VENUE NAME:     The Grand Palace                              -->
-  <!-- 7. VENUE ADDRESS:  Mangalore, Karnataka, India                   -->
-  <!-- 8. GOOGLE MAPS:    https://maps.google.com/?q=The+Grand+Palace+Mangalore+Karnataka+India -->
-  <!-- 9. COUPLE PHOTO:   images/couple.jpg (Bride & Groom together)    -->
-  <!-- 10. INVITATION PIC:images/wedding-card.jpg (Uploaded Card Pic)   -->
-  <!-- 11. MUSIC FILE:    audio/wedding-music.mp3                       -->
-  <!-- ================================================================ -->
+  <!-- Ambient Falling Hearts & Petals Canvas -->
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
 
-  <!-- Floating Falling Rose & Gold Petals Canvas -->
-  <canvas id="petalsCanvas" aria-hidden="true"></canvas>
-
-  <!-- Sparkle Burst Overlay for Envelope Opening Animation -->
+  <!-- Sparkle Burst Overlay for Envelope Opening -->
   <div id="sparkleBurstContainer" class="sparkle-burst-container" aria-hidden="true"></div>
 
   <!-- Background Music Audio Element -->
-  <!-- ===== MUSIC FILE SETTING ===== -->
   <audio id="weddingAudio" loop preload="none">
     <source src="audio/wedding-music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+    Your browser does not support audio.
   </audio>
 
   <!-- Floating Music Toggle Button -->
@@ -67,527 +50,741 @@
     </span>
   </button>
 
-  <!-- Navigation Bar -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="nav-brand" aria-label="Roshan and Elvisha Wedding">
-        <span class="brand-monogram">R &amp; E</span>
-        <span class="brand-sub">The Wedding</span>
-      </a>
-
-      <!-- Desktop Navigation Menu -->
-      <nav class="nav-menu" id="navMenu">
-        <ul class="nav-list">
-          <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-          <li class="nav-item"><a href="#couple" class="nav-link">Couple</a></li>
-          <li class="nav-item"><a href="#invitation" class="nav-link">Invitation</a></li>
-          <li class="nav-item"><a href="#venue" class="nav-link">Venue</a></li>
-        </ul>
-      </nav>
-
-      <!-- Mobile Hamburger Button -->
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <!-- ========================================== -->
-    <!-- 1. HERO SECTION                            -->
-    <!-- ========================================== -->
-    <section id="home" class="hero-section">
-      <!-- Traditional Royal Mandala Background Decoration -->
-      <div class="mandala-bg-ornament" aria-hidden="true"></div>
-
-      <div class="hero-content fade-in-up">
-        
-        <!-- Auspicious Royal Monogram Crest -->
-        <div class="auspicious-symbol">
-          <div class="royal-crest-circle">
-            <span class="crest-letters">R &amp; E</span>
-          </div>
-        </div>
-
-        <p class="hero-pre-title">Wedding Invitation</p>
-        
-        <div class="floral-divider-top" aria-hidden="true">
-          <span class="divider-line"></span>
-          <span class="divider-ornament">✦ ❦ ✦</span>
-          <span class="divider-line"></span>
-        </div>
-
-        <!-- Couple Names Styled with Ultra-Stylish Royal Calligraphy -->
-        <!-- ===== BRIDE & GROOM NAMES ===== -->
-        <h1 class="hero-couple-names stylish-script-names">
-          <span class="groom-name">Roshan</span>
-          <span class="hero-heart-separator" aria-label="and">❤️</span>
-          <span class="bride-name">Elvisha</span>
-        </h1>
-
-        <p class="hero-tagline">We are getting married!</p>
-
-        <!-- Wedding Date -->
-        <!-- ===== WEDDING DATE ===== -->
-        <div class="hero-date-badge">
-          <span class="date-icon">✧</span>
-          <span class="date-text">11 January 2027</span>
-          <span class="date-icon">✧</span>
-        </div>
-
-        <!-- Decorative Floral Arch Graphic -->
-        <div class="hero-floral-motif" aria-hidden="true">
-          <svg viewBox="0 0 240 32" width="240" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M120 16 C80 2 40 28 0 16" stroke="url(#goldGrad)" stroke-width="1.2"/>
-            <path d="M120 16 C160 2 200 28 240 16" stroke="url(#goldGrad)" stroke-width="1.2"/>
-            <circle cx="120" cy="16" r="4" fill="url(#goldGrad)"/>
-            <circle cx="80" cy="12" r="2.5" fill="url(#goldGrad)"/>
-            <circle cx="160" cy="12" r="2.5" fill="url(#goldGrad)"/>
-            <circle cx="40" cy="20" r="2" fill="url(#goldGrad)"/>
-            <circle cx="200" cy="20" r="2" fill="url(#goldGrad)"/>
-            <defs>
-              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#bf953f"/>
-                <stop offset="25%" stop-color="#fcf6ba"/>
-                <stop offset="50%" stop-color="#b38728"/>
-                <stop offset="75%" stop-color="#fbf5b7"/>
-                <stop offset="100%" stop-color="#aa771c"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
-        <!-- Action Button: Triggers the Magical 3D Envelope Opening Animation -->
-        <div class="hero-btn-container">
-          <button id="heroOpenInvitationBtn" class="btn-primary" aria-label="Open Wedding Invitation">
-            <span class="btn-icon">💌</span>
-            <span class="btn-text">Open Invitation</span>
-            <span class="btn-shimmer" aria-hidden="true"></span>
-          </button>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="scroll-down-hint">
-          <span class="hint-text">Scroll Down</span>
-          <div class="mouse-scroll-icon">
-            <span class="mouse-wheel"></span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 2. BRIDE & GROOM TOGETHER SECTION          -->
-    <!-- ========================================== -->
-    <section id="couple" class="couple-section">
-      <div class="section-container">
-        
-        <div class="section-header text-center reveal-on-scroll">
-          <span class="section-subtitle">Together Forever</span>
-          <h2 class="section-title">The Bride &amp; The Groom</h2>
-          <div class="ornamental-divider" aria-hidden="true">
-            <span class="divider-leaf">❧</span>
-            <span class="divider-center">❦</span>
-            <span class="divider-leaf">☙</span>
-          </div>
-        </div>
-
-        <!-- Single Royal Frame Featuring Bride & Groom Together -->
-        <div class="together-couple-wrapper reveal-on-scroll">
-          <div class="together-photo-frame">
-            
-            <!-- Ornate Corner Filigrees -->
-            <div class="frame-corner top-left"></div>
-            <div class="frame-corner top-right"></div>
-            <div class="frame-corner bottom-left"></div>
-            <div class="frame-corner bottom-right"></div>
-
-            <div class="together-inner-border">
-              <!-- ===== BRIDE & GROOM TOGETHER PHOTO ===== -->
-              <div class="together-img-wrapper">
-                <img 
-                  src="images/couple.jpg" 
-                  alt="Roshan Lobo &amp; Elvisha Dsouza Together" 
-                  class="together-couple-img" 
-                  id="togetherCoupleImg"
-                  loading="lazy"
-                >
-              </div>
-            </div>
-
-            <!-- Decorative Gold Ribbon Tag -->
-            <div class="together-ribbon-tag">
-              <span>✦ Happily Ever After ✦</span>
-            </div>
-          </div>
-
-          <div class="together-couple-info text-center">
-            <!-- Stylish Calligraphic Names Matching Wedding Theme (Single Line on All Screens) -->
-            <!-- ===== COUPLE NAMES ===== -->
-            <h3 class="together-names stylish-script-names" id="togetherNames">
-              <span class="name-groom">Roshan Lobo</span>
-              <span class="together-heart" aria-label="and">❤️</span>
-              <span class="name-bride">Elvisha Dsouza</span>
-            </h3>
-            <p class="together-role-badge">Groom &amp; Bride</p>
-            <p class="together-caption">Two Souls, One Bond • Forever Together</p>
-            <div class="role-underline"></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 3. SAVE THE DATE & COUNTDOWN SECTION       -->
-    <!-- (CARD IS REVEALED INSIDE INVITATION BUTTON)-->
-    <!-- ========================================== -->
-    <section id="invitation" class="invitation-section">
-      <div class="section-container">
-        
-        <div class="section-header text-center reveal-on-scroll">
-          <span class="section-subtitle">Save The Date</span>
-          <h2 class="section-title">The Wedding Celebration</h2>
-          <div class="ornamental-divider" aria-hidden="true">
-            <span class="divider-leaf">❧</span>
-            <span class="divider-center">💍</span>
-            <span class="divider-leaf">☙</span>
-          </div>
-        </div>
-
-        <!-- ========================================== -->
-        <!-- COUNTDOWN TO WEDDING CEREMONY              -->
-        <!-- ========================================== -->
-        <div class="countdown-wrapper reveal-on-scroll">
-          <div class="countdown-card">
-            
-            <div class="countdown-header">
-              <span class="countdown-icon">⏳</span>
-              <h3 class="countdown-title">Monday, 11 January 2027</h3>
-              <p class="countdown-ceremony-time">Wedding Ceremony • 11:00 AM onwards</p>
-              <p class="countdown-subtitle">Counting every precious moment until we say "I do"</p>
-            </div>
-
-            <!-- Countdown Timer Display (Target: 11 January 2027) -->
-            <div class="countdown-timer" id="countdownTimer" data-target-date="2027-01-11T11:00:00">
-              <div class="time-block">
-                <span class="time-number" id="days">00</span>
-                <span class="time-label">Days</span>
-              </div>
-              <span class="time-separator">|</span>
-              
-              <div class="time-block">
-                <span class="time-number" id="hours">00</span>
-                <span class="time-label">Hours</span>
-              </div>
-              <span class="time-separator">|</span>
-              
-              <div class="time-block">
-                <span class="time-number" id="minutes">00</span>
-                <span class="time-label">Minutes</span>
-              </div>
-              <span class="time-separator">|</span>
-              
-              <div class="time-block">
-                <span class="time-number" id="seconds">00</span>
-                <span class="time-label">Seconds</span>
-              </div>
-            </div>
-
-            <!-- Shown when countdown expires -->
-            <div class="wedding-day-message" id="weddingDayMessage" style="display: none;">
-              <h3>Today is our Wedding Day! ❤️</h3>
-            </div>
-
-            <!-- Dedicated Button to Launch the Royal Gatefold Invitation Experience -->
-            <div class="countdown-action-container">
-              <button id="sectionOpenInvitationBtn" class="btn-primary invitation-reveal-btn" aria-label="Open Wedding Invitation">
-                <span class="btn-icon">💌</span>
-                <span class="btn-text">Open Wedding Invitation</span>
-                <span class="btn-shimmer" aria-hidden="true"></span>
-              </button>
-              <p class="reveal-hint-text">✦ Tap to reveal the royal wedding invitation card ✦</p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 5. LOCATION / VENUE SECTION                -->
-    <!-- ========================================== -->
-    <section id="venue" class="venue-section">
-      <div class="section-container">
-        
-        <div class="section-header text-center reveal-on-scroll">
-          <span class="section-subtitle">Find Your Way</span>
-          <h2 class="section-title">Wedding Venue</h2>
-          <div class="ornamental-divider" aria-hidden="true">
-            <span class="divider-leaf">❧</span>
-            <span class="divider-center">🏛️</span>
-            <span class="divider-leaf">☙</span>
-          </div>
-        </div>
-
-        <div class="venue-card-wrapper reveal-on-scroll">
-          <div class="venue-card">
-            
-            <!-- Palace Vector Illustration / Icon Emblem -->
-            <div class="venue-palace-crest">
-              <svg viewBox="0 0 80 80" width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="40" cy="40" r="38" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="2 2"/>
-                <path d="M40 18 L24 30 H56 Z" fill="url(#goldGrad)"/>
-                <rect x="26" y="30" width="28" height="26" fill="#fcf9f2" stroke="#d4af37" stroke-width="1.5"/>
-                <!-- Pillars -->
-                <line x1="32" y1="30" x2="32" y2="56" stroke="#d4af37" stroke-width="1.5"/>
-                <line x1="48" y1="30" x2="48" y2="56" stroke="#d4af37" stroke-width="1.5"/>
-                <!-- Center Arch Door -->
-                <path d="M36 56 V44 Q40 40 44 44 V56 Z" fill="#580c16"/>
-                <rect x="20" y="56" width="40" height="4" fill="url(#goldGrad)"/>
-              </svg>
-            </div>
-
-            <!-- ===== VENUE NAME ===== -->
-            <h3 class="venue-title">The Grand Palace</h3>
-            
-            <!-- ===== VENUE ADDRESS ===== -->
-            <p class="venue-location-address">
-              <span>Mangalore, Karnataka, India</span>
-            </p>
-
-            <p class="venue-description">
-              We look forward to celebrating amidst the grand architecture and royal hospitality of The Grand Palace.
-            </p>
-
-            <div class="venue-action">
-              <!-- ===== GOOGLE MAPS URL ===== -->
-              <!-- Edit the href below to change the Google Maps URL -->
-              <a 
-                href="https://maps.google.com/?q=The+Grand+Palace+Mangalore+Karnataka+India" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="btn-primary venue-map-btn"
-                id="viewLocationBtn"
-              >
-                <span class="map-pin-icon">📍</span>
-                <span class="btn-text">View Location</span>
-              </a>
-            </div>
-
-            <div class="venue-map-preview">
-              <!-- Google Maps Embed for immediate visual orientation -->
-              <iframe 
-                src="https://maps.google.com/maps?q=The+Grand+Palace+Mangalore+Karnataka+India&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                width="100%" 
-                height="240" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
-                title="The Grand Palace Location Map">
-              </iframe>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 6. WEDDING MESSAGE SECTION                 -->
-    <!-- ========================================== -->
-    <section class="romantic-message-section">
-      <div class="section-container">
-        
-        <div class="message-card reveal-on-scroll">
-          <div class="message-quote-mark">“</div>
-          
-          <h2 class="romantic-headline">Two hearts, one beautiful journey.</h2>
-          
-          <p class="romantic-body">
-            "Your presence and blessings will make our special day even more meaningful."
-          </p>
-
-          <div class="message-decorative-flourish" aria-hidden="true">
-            <span class="flourish-star">✦</span>
-            <span class="flourish-heart">❤️</span>
-            <span class="flourish-star">✦</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 7. FINAL CLOSING SECTION                   -->
-    <!-- ========================================== -->
-    <section class="closing-section">
-      <div class="section-container text-center reveal-on-scroll">
-        
-        <!-- Decorative Floral Arch -->
-        <div class="closing-floral-ornament" aria-hidden="true">
-          <svg viewBox="0 0 160 36" width="160" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M80 18 Q50 4 20 18 Q0 26 10 32" stroke="#d4af37" stroke-width="1.2"/>
-            <path d="M80 18 Q110 4 140 18 Q160 26 150 32" stroke="#d4af37" stroke-width="1.2"/>
-            <circle cx="80" cy="18" r="4" fill="url(#goldGrad)"/>
-            <circle cx="50" cy="11" r="2" fill="#580c16"/>
-            <circle cx="110" cy="11" r="2" fill="#580c16"/>
-          </svg>
-        </div>
-
-        <h2 class="closing-heading">We can't wait to celebrate with you!</h2>
-
-        <!-- Couple Names in Stylish Script -->
-        <!-- ===== BRIDE & GROOM CLOSING NAMES ===== -->
-        <p class="closing-couple-names stylish-script-names">
-          <span>Roshan</span>
-          <span class="closing-heart">❤️</span>
-          <span>Elvisha</span>
-        </p>
-
-        <!-- Wedding Date -->
-        <!-- ===== CLOSING DATE ===== -->
-        <p class="closing-date">11 January 2027</p>
-
-        <!-- Floral Footer Divider -->
-        <div class="closing-bottom-floral" aria-hidden="true">
-          <span class="line"></span>
-          <span class="symbol">❦ ❀ ❦</span>
-          <span class="line"></span>
-        </div>
-
-        <p class="copyright-note">
-          Two Hearts • One Journey • Forever Together
-        </p>
-
-      </div>
-    </section>
-  </main>
-
   <!-- ======================================================== -->
-  <!-- 3D ROYAL WEDDING INVITATION PRESENTATION MODAL           -->
-  <!-- (OPENS IN 3D WITH LUXURY GATEFOLD & SPARKLING REVELATION) -->
+  <!-- 1. ENVELOPE LANDING SCREEN (CHUNGDOI SIGNATURE ENVELOPE)  -->
   <!-- ======================================================== -->
-  <div id="invitationModal" class="invitation-modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-backdrop-blur" id="invitationModalBackdrop"></div>
+  <div id="envelopeScreen" class="envelope-screen">
     
-    <div class="modal-viewport">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Invitation">&times;</button>
-
-      <!-- 3D Royal Stage -->
-      <div class="royal-stage-3d" id="royalStage">
-        
-        <!-- The Royal Keepsake Folio / Box Container -->
-        <div class="royal-folio-box" id="royalFolioBox">
-
-          <!-- Deep Velvet Silk Interior Lining with Golden Pattern -->
-          <div class="folio-interior-lining" aria-hidden="true">
-            <div class="lining-mandala"></div>
-          </div>
-
-          <!-- THE OFFICIAL WEDDING INVITATION CARD (Revealed Inside) -->
-          <div class="folio-card-wrapper" id="folioCardWrapper">
-            <div class="folio-card-inner">
-              <div class="card-filigree corner-top-left" aria-hidden="true"></div>
-              <div class="card-filigree corner-top-right" aria-hidden="true"></div>
-              <div class="card-filigree corner-bottom-left" aria-hidden="true"></div>
-              <div class="card-filigree corner-bottom-right" aria-hidden="true"></div>
-              <div class="card-shimmer-sweep" id="cardShimmerSweep" aria-hidden="true"></div>
-
-              <!-- Official Card Picture -->
-              <img 
-                src="images/wedding-card.jpg" 
-                alt="Official Wedding Invitation Card of Roshan Lobo &amp; Elvisha Dsouza" 
-                class="folio-wedding-card-img" 
-                id="folioCardImg"
-              >
-            </div>
-          </div>
-
-          <!-- LEFT ROYAL GATEFOLD DOOR (Swings Open in 3D: rotateY(-118deg)) -->
-          <div class="royal-gate royal-gate-left" id="royalGateLeft">
-            <div class="gate-surface">
-              <div class="gate-border-inlay"></div>
-              <div class="gate-corner top-left"></div>
-              <div class="gate-corner bottom-left"></div>
-              <div class="gate-crest-half crest-half-left">
-                <span class="gate-monogram-part">R</span>
-                <div class="gate-mandala-arc"></div>
-              </div>
-            </div>
-            <div class="gate-silk-back"></div>
-          </div>
-
-          <!-- RIGHT ROYAL GATEFOLD DOOR (Swings Open in 3D: rotateY(118deg)) -->
-          <div class="royal-gate royal-gate-right" id="royalGateRight">
-            <div class="gate-surface">
-              <div class="gate-border-inlay"></div>
-              <div class="gate-corner top-right"></div>
-              <div class="gate-corner bottom-right"></div>
-              <div class="gate-crest-half crest-half-right">
-                <span class="gate-monogram-part">E</span>
-                <div class="gate-mandala-arc"></div>
-              </div>
-            </div>
-            <div class="gate-silk-back"></div>
-          </div>
-
-          <!-- ROYAL SATIN RIBBON & WAX SEAL SASH -->
-          <div class="royal-sash" id="royalSash">
-            <div class="sash-ribbon left-ribbon"></div>
-            
-            <!-- Dimensional Golden Wax Seal with R & E Crest -->
-            <div class="royal-wax-seal" id="royalWaxSeal" role="button" tabindex="0" title="Click to open invitation">
-              <div class="seal-outer-ring">
-                <div class="seal-inner-crest">
-                  <span class="seal-crest-text">R&amp;E</span>
-                  <span class="seal-date-sub">11 • 01</span>
-                </div>
-              </div>
-              <div class="seal-glow-halo"></div>
-            </div>
-
-            <div class="sash-ribbon right-ribbon"></div>
-          </div>
-
-          <!-- "Click to Open" Floating Tag -->
-          <div class="gate-open-hint" id="gateOpenHint">
-            <span class="hint-sparkle">✦</span>
-            <span>Tap Seal or Box to Open</span>
-            <span class="hint-sparkle">✦</span>
-          </div>
-
-        </div>
-
+    <!-- Central Keepsake Envelope Container -->
+    <div class="envelope-card-wrapper">
+      
+      <!-- Wax Seal with Pulsing Glow -->
+      <div id="waxSealBtn" class="envelope-wax-seal" role="button" tabindex="0" title="Click to open invitation" aria-label="Open wedding invitation">
+        <svg viewBox="0 0 24 24" class="seal-heart-icon" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
       </div>
 
-      <!-- Action Toolbar Below the Card (Appears Once Opened) -->
-      <div class="modal-card-toolbar" id="modalCardToolbar">
-        <button id="toolbarFullscreenBtn" class="btn-toolbar" title="View in high resolution">
-          <span class="toolbar-icon">🔍</span>
-          <span>Zoom Fullscreen</span>
-        </button>
-        <button id="toolbarReplayBtn" class="btn-toolbar" title="Replay royal opening animation">
-          <span class="toolbar-icon">↺</span>
-          <span>Replay Opening</span>
-        </button>
+      <!-- Outer Card with Shadow -->
+      <div class="envelope-card">
+        
+        <!-- Corner Floral Ornament WebP (Top-Left & Bottom-Right) -->
+        <div class="envelope-corner-decorations" aria-hidden="true">
+          <img src="images/flower-decoration.webp" alt="" class="corner-flower corner-flower-tl">
+          <img src="images/flower-decoration.webp" alt="" class="corner-flower corner-flower-br">
+        </div>
+
+        <div class="envelope-card-content text-center">
+          
+          <h1 class="envelope-names">
+            <span class="name-part">Roshan</span>
+            <span class="ampersand">&amp;</span>
+            <span class="name-part">Elvisha</span>
+          </h1>
+
+          <div class="envelope-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-symbol">❦</span>
+            <span class="divider-line"></span>
+          </div>
+
+          <p class="envelope-date">January 11, 2027</p>
+
+          <p class="envelope-invitation-text">Cordially Invites</p>
+
+          <button id="openInvitationBtn" class="btn-envelope-open" aria-label="Open Wedding Invitation">
+            <span>Open</span>
+            <div class="btn-shine-sweep" aria-hidden="true"></div>
+          </button>
+
+        </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Fullscreen Lightbox Modal for Card Zoom -->
-  <div id="cardLightboxModal" class="card-lightbox-modal" aria-hidden="true">
+  <!-- ======================================================== -->
+  <!-- 2. MAIN WEDDING INVITATION WEBSITE CONTENT               -->
+  <!-- ======================================================== -->
+  <div id="mainWebsite" class="main-website">
+
+    <!-- Floating Navigation Bar -->
+    <header class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#hero" class="nav-brand" aria-label="Roshan and Elvisha Wedding">
+          <span class="brand-monogram">R &amp; E</span>
+          <span class="brand-sub">The Wedding</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="#ceremony" class="nav-link">Ceremony</a></li>
+            <li class="nav-item"><a href="#couple" class="nav-link">Couple</a></li>
+            <li class="nav-item"><a href="#countdown" class="nav-link">Countdown</a></li>
+            <li class="nav-item"><a href="#venue" class="nav-link">Venue</a></li>
+            <li class="nav-item"><a href="#schedule" class="nav-link">Schedule</a></li>
+            <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li class="nav-item"><a href="#rsvp" class="nav-link">RSVP</a></li>
+          </ul>
+        </nav>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- ====================================================== -->
+      <!-- SECTION 1: HERO / SAVE THE DATE ANNOUNCEMENT           -->
+      <!-- ====================================================== -->
+      <section id="hero" class="wedding-card-section hero-section reveal-on-scroll">
+        <div class="luxury-card-container">
+          
+          <!-- Corner Flowers -->
+          <img src="images/flower-decoration.webp" alt="" class="card-flower-decor flower-top-right" aria-hidden="true">
+
+          <p class="hero-top-tag">Save The Date</p>
+
+          <h2 class="hero-names-display">
+            <span class="hero-first">Roshan</span>
+            <span class="hero-amp">&amp;</span>
+            <span class="hero-second">Elvisha</span>
+          </h2>
+
+          <div class="ornate-separator" aria-hidden="true">
+            <span class="line"></span>
+            <span class="leaf">❦</span>
+            <span class="line"></span>
+          </div>
+
+          <!-- Hero Couple Photo -->
+          <div class="hero-photo-wrapper">
+            <div class="hero-photo-frame">
+              <img src="images/chungdoi_1.jpg" alt="Roshan Glatvin Lobo &amp; Elvisha Dsouza" class="hero-photo-img" loading="eager">
+            </div>
+            <div class="photo-caption-badge">
+              <span>✦ Monday, January 11, 2027 ✦</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 2: CEREMONY INFO & FAMILY DETAILS              -->
+      <!-- ====================================================== -->
+      <section id="ceremony" class="wedding-card-section ceremony-section reveal-on-scroll">
+        <div class="luxury-card-container">
+          
+          <img src="images/flower-decoration.webp" alt="" class="card-flower-decor flower-top-left" aria-hidden="true">
+
+          <div class="section-title-wrap text-center">
+            <span class="section-badge">CEREMONY INFO</span>
+            <h3 class="section-heading">With the Blessings of Our Parents</h3>
+            <div class="ornate-separator" aria-hidden="true">
+              <span class="line"></span>
+              <span class="leaf">❦</span>
+              <span class="line"></span>
+            </div>
+          </div>
+
+          <!-- Family Info Grid: Groom's Parents & Bride's Parents -->
+          <div class="family-info-grid">
+            
+            <!-- Groom's Side -->
+            <div class="family-column groom-side">
+              <div class="family-column-inner">
+                <span class="parent-prefix">Mr. &amp; Mrs.</span>
+                <h4 class="parent-names">
+                  ROBERT LOBO<br>
+                  GRACY DSOUZA
+                </h4>
+                <div class="family-address">
+                  <p class="address-line">BHATTADKA HOUSE</p>
+                  <p class="address-line">SAJIPA MUNNUR VILLAGE AND POST</p>
+                  <p class="address-line">BANTWAL TALUK DK - 574231</p>
+                </div>
+                <div class="role-pill">Groom's Family</div>
+              </div>
+            </div>
+
+            <!-- Bride's Side -->
+            <div class="family-column bride-side">
+              <div class="family-column-inner">
+                <span class="parent-prefix">Mr. &amp; Mrs.</span>
+                <h4 class="parent-names">
+                  HERALD DSOUZA<br>
+                  EUGINE DSOUZA
+                </h4>
+                <div class="family-address">
+                  <p class="address-line">1-51-3, MADDHAR HOUSE</p>
+                  <p class="address-line">BOLIYAR POST AND VILLAGE</p>
+                  <p class="address-line">ULLAL TALUK, DAKSHINA KANNADA</p>
+                  <p class="address-line">KARNATAKA - 574153</p>
+                </div>
+                <div class="role-pill">Bride's Family</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Wedding Announcement Banner -->
+          <div class="joyful-announcement text-center">
+            <p class="announcement-intro">WE JOYFULLY ANNOUNCE THE WEDDING OF OUR CHILDREN</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 3: THE BRIDE & GROOM (STRICTLY SINGLE LINE)    -->
+      <!-- ====================================================== -->
+      <section id="couple" class="wedding-card-section couple-section reveal-on-scroll">
+        <div class="luxury-card-container">
+          
+          <img src="images/flower-decoration.webp" alt="" class="card-flower-decor flower-bottom-right" aria-hidden="true">
+
+          <div class="couple-announcement text-center">
+            
+            <!-- Single Line Couple Names on All Screens -->
+            <h3 class="couple-single-line-names" id="coupleSingleLineNames">
+              <span class="name-groom">Roshan Glatvin Lobo</span>
+              <span class="couple-heart" aria-label="and">❤️</span>
+              <span class="name-bride">Elvisha Dsouza</span>
+            </h3>
+
+            <p class="couple-roles">Groom &amp; Bride</p>
+
+            <div class="ornate-separator" aria-hidden="true">
+              <span class="line"></span>
+              <span class="leaf">❦</span>
+              <span class="line"></span>
+            </div>
+
+            <!-- Grand Couple Portrait -->
+            <div class="couple-portrait-frame">
+              <img src="images/chungdoi_2.jpg" alt="Roshan and Elvisha Standing Together" class="couple-full-portrait" loading="lazy">
+            </div>
+
+            <p class="couple-quote">“Two lives, two hearts, joined together in friendship, united forever in love.”</p>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 4: NUPTIALS & RECEPTION DETAILS               -->
+      <!-- ====================================================== -->
+      <section class="wedding-card-section events-section reveal-on-scroll">
+        <div class="luxury-card-container">
+          
+          <!-- Event 1: Nuptials Ceremony -->
+          <div class="event-details-card nuptials-card">
+            <span class="event-type-badge">CHURCH CEREMONY</span>
+            <h3 class="event-title">WEDDING NUPTIALS CEREMONY</h3>
+            <p class="event-time-highlight">AT 5:00 PM</p>
+            
+            <!-- Calendar Date Block -->
+            <div class="date-calendar-badge">
+              <span class="badge-day">MONDAY</span>
+              <span class="badge-number">11</span>
+              <span class="badge-month-year">JANUARY 2027</span>
+            </div>
+
+            <p class="event-venue-name">MOTHER OF GOD CHURCH , MOGARNAD</p>
+          </div>
+
+          <div class="event-divider-ornament" aria-hidden="true">❦ ❀ ❦</div>
+
+          <!-- Event 2: Reception Info -->
+          <div class="event-details-card reception-card">
+            <span class="event-type-badge">RECEPTION INFO</span>
+            <h3 class="event-title">WEDDING RECEPTION</h3>
+            <p class="event-subtitle">The reception will take place at:</p>
+            <p class="event-time-highlight">7:00 PM</p>
+
+            <!-- Calendar Date Block -->
+            <div class="date-calendar-badge">
+              <span class="badge-day">MONDAY</span>
+              <span class="badge-number">11</span>
+              <span class="badge-month-year">JANUARY 2027</span>
+            </div>
+
+            <p class="event-venue-name">MOTHER OF GOD CHURCH , MOGARNAD</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 5: LIVE COUNTDOWN & JANUARY 2027 CALENDAR      -->
+      <!-- ====================================================== -->
+      <section id="countdown" class="wedding-card-section countdown-section reveal-on-scroll">
+        <div class="luxury-card-container text-center">
+          
+          <img src="images/flower-decoration.webp" alt="" class="card-flower-decor flower-top-right" aria-hidden="true">
+
+          <span class="section-badge">COUNTDOWN</span>
+          <h3 class="section-heading">Counting Every Moment</h3>
+          <p class="section-subtext">Until Monday, January 11, 2027</p>
+
+          <!-- 4-Column Live Timer (Guaranteed Single Row on Mobile) -->
+          <div class="countdown-timer-grid" id="countdownTimer" data-target-date="2027-01-11T17:00:00">
+            <div class="time-box">
+              <span class="time-val" id="days">00</span>
+              <span class="time-unit">Days</span>
+            </div>
+            <div class="time-box">
+              <span class="time-val" id="hours">00</span>
+              <span class="time-unit">Hours</span>
+            </div>
+            <div class="time-box">
+              <span class="time-val" id="minutes">00</span>
+              <span class="time-unit">Mins</span>
+            </div>
+            <div class="time-box">
+              <span class="time-val" id="seconds">00</span>
+              <span class="time-unit">Secs</span>
+            </div>
+          </div>
+
+          <!-- January 2027 Interactive Calendar Grid -->
+          <div class="month-calendar-widget">
+            <h4 class="calendar-month-title">January 2027</h4>
+            <div class="calendar-grid">
+              <span class="cal-header">Mo</span>
+              <span class="cal-header">Tu</span>
+              <span class="cal-header">We</span>
+              <span class="cal-header">Th</span>
+              <span class="cal-header">Fr</span>
+              <span class="cal-header">Sa</span>
+              <span class="cal-header">Su</span>
+              
+              <!-- Blank offset for Fri start -->
+              <span class="cal-empty"></span>
+              <span class="cal-empty"></span>
+              <span class="cal-empty"></span>
+              <span class="cal-empty"></span>
+              <span class="cal-day">1</span>
+              <span class="cal-day">2</span>
+              <span class="cal-day">3</span>
+              <span class="cal-day">4</span>
+              <span class="cal-day">5</span>
+              <span class="cal-day">6</span>
+              <span class="cal-day">7</span>
+              <span class="cal-day">8</span>
+              <span class="cal-day">9</span>
+              <span class="cal-day">10</span>
+              
+              <!-- Wedding Day Highlighted with Heart -->
+              <span class="cal-day cal-wedding-day" title="Wedding Day!">
+                11
+                <span class="cal-heart-dot" aria-hidden="true">❤</span>
+              </span>
+
+              <span class="cal-day">12</span>
+              <span class="cal-day">13</span>
+              <span class="cal-day">14</span>
+              <span class="cal-day">15</span>
+              <span class="cal-day">16</span>
+              <span class="cal-day">17</span>
+              <span class="cal-day">18</span>
+              <span class="cal-day">19</span>
+              <span class="cal-day">20</span>
+              <span class="cal-day">21</span>
+              <span class="cal-day">22</span>
+              <span class="cal-day">23</span>
+              <span class="cal-day">24</span>
+              <span class="cal-day">25</span>
+              <span class="cal-day">26</span>
+              <span class="cal-day">27</span>
+              <span class="cal-day">28</span>
+              <span class="cal-day">29</span>
+              <span class="cal-day">30</span>
+              <span class="cal-day">31</span>
+            </div>
+
+            <!-- Add to Calendar Button -->
+            <div class="calendar-action-wrap">
+              <a 
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Roshan+%26+Elvisha&dates=20270111T113000Z/20270111T163000Z&details=Wedding+Nuptials+%26+Reception+Celebration+of+Roshan+Glatvin+Lobo+and+Elvisha+Dsouza.&location=Mother+of+God+Church,+Mogarnad,+Bantwal,+Karnataka" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn-calendar-add" 
+                id="addToCalendarBtn"
+              >
+                <svg class="btn-cal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                  <line x1="12" y1="14" x2="12" y2="18"></line>
+                  <line x1="10" y1="16" x2="14" y2="16"></line>
+                </svg>
+                <span>Add to Calendar</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 6: VENUE & GOOGLE MAPS                         -->
+      <!-- ====================================================== -->
+      <section id="venue" class="wedding-card-section venue-section reveal-on-scroll">
+        <div class="luxury-card-container text-center">
+          
+          <span class="section-badge">LOCATION</span>
+          <h3 class="section-heading">Wedding Reception Venue</h3>
+          
+          <h4 class="venue-church-title">MOTHER OF GOD CHURCH , MOGARNAD</h4>
+          <p class="venue-address-sub">Mogarnad, Bantwal Taluk, Dakshina Kannada, Karnataka</p>
+
+          <div class="ornate-separator" aria-hidden="true">
+            <span class="line"></span>
+            <span class="leaf">⛪</span>
+            <span class="line"></span>
+          </div>
+
+          <!-- Embedded Interactive Google Map -->
+          <div class="venue-map-frame">
+            <iframe 
+              class="google-map-iframe" 
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAY8WQxGig6axA_jZil94btO9G6dhsFEKg&amp;q=MOTHER%20OF%20GOD%20CHURCH%20%2C%20MOGARNAD" 
+              loading="lazy" 
+              allowfullscreen="" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mother of God Church Mogarnad Location Map"
+            ></iframe>
+          </div>
+
+          <!-- Direct Get Directions Button -->
+          <div class="venue-actions-wrap">
+            <a 
+              href="https://www.google.com/maps/dir/?api=1&amp;destination=MOTHER%20OF%20GOD%20CHURCH%20%2C%20MOGARNAD" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn-directions" 
+              id="getDirectionsBtn"
+            >
+              <svg class="direction-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+              </svg>
+              <span>Get directions</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 7: DRESS CODE                                  -->
+      <!-- ====================================================== -->
+      <section class="wedding-card-section dresscode-section reveal-on-scroll">
+        <div class="luxury-card-container text-center">
+          
+          <span class="section-badge">ATTIRE</span>
+          <h3 class="section-heading">DRESS CODE</h3>
+          <p class="dresscode-subtitle">Party Attire</p>
+
+          <div class="dresscode-palette-wrap">
+            
+            <div class="color-item">
+              <div class="color-circle" style="background-color: #5A0E19;" title="Deep Burgundy"></div>
+              <span class="color-name">Burgundy</span>
+              <span class="color-hex">#5A0E19</span>
+            </div>
+
+            <div class="color-item">
+              <div class="color-circle" style="background-color: #C5A584;" title="Champagne Gold"></div>
+              <span class="color-name">Champagne</span>
+              <span class="color-hex">#C5A584</span>
+            </div>
+
+            <div class="color-item">
+              <div class="color-circle color-white" style="background-color: #FFFFFF;" title="Classic White"></div>
+              <span class="color-name">White</span>
+              <span class="color-hex">#FFFFFF</span>
+            </div>
+
+          </div>
+
+          <p class="dresscode-hint">We kindly request our guests to dress in our celebratory colors or elegant formal attire.</p>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 8: WEDDING DAY SCHEDULE / TIMELINE             -->
+      <!-- ====================================================== -->
+      <section id="schedule" class="wedding-card-section schedule-section reveal-on-scroll">
+        <div class="luxury-card-container">
+          
+          <div class="section-title-wrap text-center">
+            <span class="section-badge">TIMELINE</span>
+            <h3 class="section-heading">WEDDING DAY SCHEDULE</h3>
+            <p class="section-subtext">Monday, January 11, 2027</p>
+            <div class="ornate-separator" aria-hidden="true">
+              <span class="line"></span>
+              <span class="leaf">❦</span>
+              <span class="line"></span>
+            </div>
+          </div>
+
+          <!-- Vertical Timeline -->
+          <div class="timeline-container">
+            <div class="timeline-line" aria-hidden="true"></div>
+
+            <!-- Item 1: 5:30 PM Nuptial -->
+            <div class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-time">5:30 PM</div>
+              <div class="timeline-content">
+                <h4 class="timeline-event-name">Nuptial</h4>
+                <p class="timeline-event-desc">Sacred Nuptial Blessing ceremony at Mother of God Church, Mogarnad.</p>
+              </div>
+            </div>
+
+            <!-- Item 2: 7:00 PM Reception -->
+            <div class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-time">7:00 PM</div>
+              <div class="timeline-content">
+                <h4 class="timeline-event-name">Reception</h4>
+                <p class="timeline-event-desc">Grand entry of the newly married couple, welcoming drinks and music.</p>
+              </div>
+            </div>
+
+            <!-- Item 3: 8:00 PM Toasts & Cake -->
+            <div class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-time">8:00 PM</div>
+              <div class="timeline-content">
+                <h4 class="timeline-event-name">Toasts &amp; Cake</h4>
+                <p class="timeline-event-desc">Raising a glass to the bride and groom, followed by cutting the wedding cake.</p>
+              </div>
+            </div>
+
+            <!-- Item 4: 9:00 PM Main Course -->
+            <div class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-time">9:00 PM</div>
+              <div class="timeline-content">
+                <h4 class="timeline-event-name">Main Course</h4>
+                <p class="timeline-event-desc">Sumptuous wedding banquet, delicacies, and celebratory dancing.</p>
+              </div>
+            </div>
+
+            <!-- Item 5: 10:00 PM Farewell -->
+            <div class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-time">10:00 PM</div>
+              <div class="timeline-content">
+                <h4 class="timeline-event-name">Farewell</h4>
+                <p class="timeline-event-desc">Heartfelt thanks, blessings, and send-off for Roshan and Elvisha.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 9: PHOTO GALLERY                               -->
+      <!-- ====================================================== -->
+      <section id="gallery" class="wedding-card-section gallery-section reveal-on-scroll">
+        <div class="luxury-card-container text-center">
+          
+          <span class="section-badge">MEMORIES</span>
+          <h3 class="section-heading">Photo Gallery</h3>
+          <p class="section-subtext">Capturing Moments of Love &amp; Happiness</p>
+          
+          <div class="ornate-separator" aria-hidden="true">
+            <span class="line"></span>
+            <span class="leaf">❦</span>
+            <span class="line"></span>
+          </div>
+
+          <!-- Photo Cards Grid -->
+          <div class="gallery-grid">
+            
+            <div class="gallery-card" data-gallery-index="0" role="button" tabindex="0" aria-label="View photo 1 in fullscreen">
+              <div class="gallery-img-wrap">
+                <img src="images/chungdoi_1.jpg" alt="Roshan and Elvisha in black outfits" class="gallery-thumb" loading="lazy">
+                <div class="gallery-overlay">
+                  <span class="zoom-icon">🔍</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-card" data-gallery-index="1" role="button" tabindex="0" aria-label="View photo 2 in fullscreen">
+              <div class="gallery-img-wrap">
+                <img src="images/chungdoi_2.jpg" alt="Roshan and Elvisha standing together" class="gallery-thumb" loading="lazy">
+                <div class="gallery-overlay">
+                  <span class="zoom-icon">🔍</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-card" data-gallery-index="2" role="button" tabindex="0" aria-label="View photo 3 in fullscreen">
+              <div class="gallery-img-wrap">
+                <img src="images/chungdoi_3.jpg" alt="Roshan and Elvisha with rose bouquet" class="gallery-thumb" loading="lazy">
+                <div class="gallery-overlay">
+                  <span class="zoom-icon">🔍</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-card" data-gallery-index="3" role="button" tabindex="0" aria-label="View photo 4 in fullscreen">
+              <div class="gallery-img-wrap">
+                <img src="images/chungdoi_4.jpg" alt="Roshan and Elvisha portrait" class="gallery-thumb" loading="lazy">
+                <div class="gallery-overlay">
+                  <span class="zoom-icon">🔍</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Printed Card Lightbox Trigger -->
+          <div class="invitation-card-trigger-wrap">
+            <button id="viewOriginalCardBtn" class="btn-view-original-card">
+              <span>💌 View Printed Wedding Invitation Card</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 10: CONFIRM ATTENDANCE / RSVP                  -->
+      <!-- ====================================================== -->
+      <section id="rsvp" class="wedding-card-section rsvp-section reveal-on-scroll">
+        <div class="luxury-card-container">
+          
+          <img src="images/flower-decoration.webp" alt="" class="card-flower-decor flower-top-left" aria-hidden="true">
+
+          <div class="section-title-wrap text-center">
+            <span class="section-badge">RSVP</span>
+            <h3 class="section-heading">CONFIRM ATTENDANCE</h3>
+            <p class="section-subtext">Please let us know if you can join our celebration</p>
+            <div class="ornate-separator" aria-hidden="true">
+              <span class="line"></span>
+              <span class="leaf">❦</span>
+              <span class="line"></span>
+            </div>
+          </div>
+
+          <form id="rsvpForm" class="rsvp-form">
+            
+            <div class="form-group">
+              <label for="guestName">Your Full Name *</label>
+              <input type="text" id="guestName" name="guestName" placeholder="e.g. John Dsouza" required>
+            </div>
+
+            <div class="form-group">
+              <label>Will You Be Attending? *</label>
+              <div class="rsvp-radio-options">
+                <label class="radio-option">
+                  <input type="radio" name="attendance" value="attending" checked>
+                  <span class="radio-label">✓ Yes, with joy!</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="attendance" value="regret">
+                  <span class="radio-label">✕ Regretfully cannot</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" id="guestsCountGroup">
+              <label for="guestCount">Number of Guests</label>
+              <select id="guestCount" name="guestCount">
+                <option value="1">1 Person</option>
+                <option value="2" selected>2 Persons</option>
+                <option value="3">3 Persons</option>
+                <option value="4">4 Persons</option>
+                <option value="5+">5+ Family</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="guestMessage">Warm Wishes &amp; Blessings</label>
+              <textarea id="guestMessage" name="guestMessage" rows="3" placeholder="Share your love and blessings for Roshan &amp; Elvisha..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-rsvp-submit" id="rsvpSubmitBtn">
+              <span>Send RSVP Response</span>
+            </button>
+
+            <!-- Thank you confirmation message -->
+            <div id="rsvpSuccessMessage" class="rsvp-success-message" style="display: none;">
+              <span class="check-icon">💖</span>
+              <h4>Thank you for your response!</h4>
+              <p>Your blessings and presence mean the world to Roshan &amp; Elvisha.</p>
+            </div>
+
+          </form>
+
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- SECTION 11: CLOSING & THANK YOU                        -->
+      <!-- ====================================================== -->
+      <section class="wedding-card-section closing-section text-center reveal-on-scroll">
+        <div class="luxury-card-container">
+          
+          <img src="images/flower-decoration.webp" alt="" class="card-flower-decor flower-top-right" aria-hidden="true">
+
+          <p class="closing-quote">“Your presence would be the greatest gift we could receive!”</p>
+          
+          <div class="closing-heart-flourish" aria-hidden="true">♡</div>
+
+          <h3 class="closing-names">Roshan &amp; Elvisha</h3>
+          
+          <p class="closing-date-text">January 11, 2027 • Mother of God Church, Mogarnad</p>
+
+          <div class="ornate-separator" aria-hidden="true">
+            <span class="line"></span>
+            <span class="leaf">❦</span>
+            <span class="line"></span>
+          </div>
+
+          <p class="closing-footer-note">Two Hearts • One Journey • Forever Together</p>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 3. FULLSCREEN LIGHTBOX MODAL FOR GALLERY & CARD          -->
+  <!-- ======================================================== -->
+  <div id="galleryLightboxModal" class="lightbox-modal" aria-hidden="true" role="dialog">
     <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
     <div class="lightbox-dialog">
       <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close Fullscreen View">&times;</button>
-      <img src="images/wedding-card.jpg" alt="Wedding Card Full View" class="lightbox-img">
+      
+      <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrevBtn" aria-label="Previous photo">‹</button>
+      <div class="lightbox-image-wrap">
+        <img src="images/chungdoi_1.jpg" alt="Enlarged wedding photo" class="lightbox-img" id="lightboxImg">
+      </div>
+      <button class="lightbox-nav-btn lightbox-next" id="lightboxNextBtn" aria-label="Next photo">›</button>
+
+      <div class="lightbox-counter" id="lightboxCounter">1 / 4</div>
     </div>
   </div>
 
