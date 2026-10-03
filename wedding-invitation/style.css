@@ -56,6 +56,291 @@ body.chungdoi-theme {
   justify-content: center;
 }
 
+body.entrance-locked {
+  overflow: hidden !important;
+}
+
+/* ==========================================================================
+   0. FULLSCREEN ENTRANCE GATE SCREEN (OPEN THE WEBSITE)
+   ========================================================================== */
+.entrance-gate-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6e1a20 0%, #511419 50%, #380a0e 100%);
+  overflow: hidden;
+  padding: 16px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+}
+
+.entrance-gate-screen.dismissed {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+/* Floating Ambient Hearts */
+.ambient-floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.float-heart {
+  position: absolute;
+  color: #a8323b;
+  font-size: 20px;
+  opacity: 0.35;
+  animation: float-up-ambient 18s infinite linear;
+}
+
+.float-heart.h-1 { left: 12%; bottom: -30px; font-size: 18px; animation-duration: 20s; animation-delay: 0s; color: #a8323b; }
+.float-heart.h-2 { left: 24%; bottom: -30px; font-size: 26px; animation-duration: 16s; animation-delay: 3s; color: #c5a584; opacity: 0.45; }
+.float-heart.h-3 { left: 42%; bottom: -30px; font-size: 16px; animation-duration: 22s; animation-delay: 7s; color: #a8323b; }
+.float-heart.h-4 { left: 58%; bottom: -30px; font-size: 22px; animation-duration: 19s; animation-delay: 2s; color: #c5a584; opacity: 0.4; }
+.float-heart.h-5 { left: 74%; bottom: -30px; font-size: 28px; animation-duration: 17s; animation-delay: 5s; color: #a8323b; }
+.float-heart.h-6 { left: 88%; bottom: -30px; font-size: 16px; animation-duration: 24s; animation-delay: 9s; color: #c5a584; opacity: 0.35; }
+.float-heart.h-7 { left: 6%; bottom: -30px; font-size: 24px; animation-duration: 21s; animation-delay: 11s; color: #c5a584; opacity: 0.4; }
+.float-heart.h-8 { left: 34%; bottom: -30px; font-size: 14px; animation-duration: 25s; animation-delay: 4s; color: #a8323b; }
+.float-heart.h-9 { left: 66%; bottom: -30px; font-size: 20px; animation-duration: 18s; animation-delay: 8s; color: #c5a584; opacity: 0.45; }
+.float-heart.h-10 { left: 82%; bottom: -30px; font-size: 24px; animation-duration: 23s; animation-delay: 1s; color: #a8323b; }
+
+@keyframes float-up-ambient {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.45;
+  }
+  85% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Centered Keepsake Invitation Card */
+.entrance-card-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  background: #FAF7F2;
+  border-radius: 16px;
+  padding: 38px 24px 34px 24px;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transform: translateY(0);
+  transition: transform 0.4s ease;
+}
+
+/* Corner Flowers */
+.entrance-flower-corner {
+  position: absolute;
+  width: 130px;
+  pointer-events: none;
+  z-index: 15;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28));
+}
+
+.entrance-flower-corner.flower-tl {
+  top: -16px;
+  left: -22px;
+  transform: rotate(-4deg);
+}
+
+.entrance-flower-corner.flower-tr {
+  top: -16px;
+  right: -22px;
+  transform: scaleX(-1) rotate(-4deg);
+}
+
+.entrance-flower-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Wax Seal Badge */
+.entrance-wax-seal {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #6a141b, #43090e);
+  box-shadow: 0 4px 16px rgba(60, 10, 15, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  margin: 0 auto 16px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  animation: seal-gentle-pulse 2.4s infinite ease-in-out;
+  transition: transform 0.2s ease;
+}
+
+.entrance-wax-seal:hover {
+  transform: scale(1.1);
+}
+
+.entrance-seal-heart {
+  width: 22px;
+  height: 22px;
+}
+
+/* Card Typography */
+.entrance-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.entrance-couple-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.15;
+  font-family: var(--font-title);
+  color: #511419;
+  margin-bottom: 8px;
+}
+
+.title-groom,
+.title-bride {
+  font-size: clamp(2rem, 6.5vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.title-ampersand {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: var(--gold-accent);
+  line-height: 0.9;
+  margin: -2px 0;
+  opacity: 0.9;
+}
+
+/* Divider */
+.entrance-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 6px 0 10px 0;
+  width: 100%;
+}
+
+.div-line {
+  width: 45px;
+  height: 1px;
+  background: rgba(81, 20, 25, 0.3);
+}
+
+.div-symbol {
+  color: #511419;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.entrance-date-text {
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  color: #511419;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.entrance-invite-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: #7A3D45;
+  margin-bottom: 22px;
+}
+
+/* "Open" Pill Button */
+.btn-open-entrance {
+  position: relative;
+  background: #511419;
+  color: #FAF8F5;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  padding: 10px 38px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(81, 20, 25, 0.45);
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-open-entrance:hover {
+  background: #681820;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(81, 20, 25, 0.6);
+}
+
+.btn-open-entrance:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-shine-bar {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-20deg);
+  animation: shine-sweep 3.5s infinite;
+}
+
+@keyframes shine-sweep {
+  0% { left: -100%; }
+  35%, 100% { left: 160%; }
+}
+
+@media (max-width: 480px) {
+  .entrance-card-container {
+    max-width: 330px;
+    padding: 32px 18px 28px 18px;
+  }
+
+  .entrance-flower-corner {
+    width: 105px;
+  }
+
+  .entrance-flower-corner.flower-tl {
+    top: -14px;
+    left: -16px;
+  }
+
+  .entrance-flower-corner.flower-tr {
+    top: -14px;
+    right: -16px;
+  }
+
+  .title-groom,
+  .title-bride {
+    font-size: 1.85rem;
+  }
+}
+
 /* --- Architectural Church Watermark Background --- */
 .watermark-bg {
   position: fixed;

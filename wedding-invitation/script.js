@@ -59,6 +59,40 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('touchstart', enableAudioOnGesture, { once: true });
 
   // =========================================================================
+  // 0. Fullscreen Entrance Gate Screen Interaction ("Open" to Enter Website)
+  // =========================================================================
+  const entranceGateScreen = document.getElementById('entranceGateScreen');
+  const openInvitationGateBtn = document.getElementById('openInvitationGateBtn');
+  const entranceSealBtn = document.getElementById('entranceSealBtn');
+
+  function dismissEntranceGate() {
+    if (entranceGateScreen && !entranceGateScreen.classList.contains('dismissed')) {
+      entranceGateScreen.classList.add('dismissed');
+      document.body.classList.remove('entrance-locked');
+      
+      // Start background music (Ed Sheeran - Perfect) immediately on explicit user action
+      playMusic();
+      
+      setTimeout(() => {
+        entranceGateScreen.style.display = 'none';
+      }, 850);
+    }
+  }
+
+  if (openInvitationGateBtn) {
+    openInvitationGateBtn.addEventListener('click', dismissEntranceGate);
+  }
+  if (entranceSealBtn) {
+    entranceSealBtn.addEventListener('click', dismissEntranceGate);
+    entranceSealBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        dismissEntranceGate();
+      }
+    });
+  }
+
+  // =========================================================================
   // 2. Landing Envelope Interaction (Wax Seal & Polaroid)
   // =========================================================================
   const waxSealBtn = document.getElementById('waxSealBtn');
