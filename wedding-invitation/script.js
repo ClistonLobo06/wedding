@@ -1,552 +1,380 @@
 /**
- * Roshan & Elvisha — Luxury Wedding Invitation
- * ChungDoi Minimalism Dark Red Replica & Interactive Features
+ * Wedding Invitation of Roshan Glatvin Lobo & Elvisha Dsouza
+ * ChungDoi Signature Minimalist Dark Red Theme Interaction Engine
+ * Features: Ed Sheeran - Perfect, Fullscreen Lightbox, 3D Coverflow, Live Countdown, Interactive Envelope
  */
 
-(function () {
-  'use strict';
+document.addEventListener('DOMContentLoaded', () => {
 
   // =========================================================================
-  // 1. CONFIGURATION
+  // 1. Audio Background Player with Equalizer Animation (Ed Sheeran - Perfect)
   // =========================================================================
-  const WEDDING_CONFIG = {
-    // Target Wedding Ceremony Date: Monday, 11 January 2027, 5:00 PM (17:00)
-    targetDate: '2027-01-11T17:00:00',
-    galleryImages: [
-      { src: 'images/chungdoi_1.jpg', alt: 'Roshan and Elvisha in black outfits' },
-      { src: 'images/chungdoi_2.jpg', alt: 'Roshan and Elvisha standing together' },
-      { src: 'images/chungdoi_3.jpg', alt: 'Roshan and Elvisha with rose bouquet' },
-      { src: 'images/chungdoi_4.jpg', alt: 'Roshan and Elvisha portrait' }
-    ],
-    printedCardImage: 'images/wedding-card.jpg'
+  const bgMusic = document.getElementById('bgMusic');
+  const floatingMusicBtn = document.getElementById('floatingMusicBtn');
+  let isPlaying = false;
+
+  function playMusic() {
+    if (!bgMusic) return;
+    bgMusic.play().then(() => {
+      isPlaying = true;
+      if (floatingMusicBtn) floatingMusicBtn.classList.add('playing');
+    }).catch(() => {
+      // Browser autoplay policy might require user gesture
+      isPlaying = false;
+      if (floatingMusicBtn) floatingMusicBtn.classList.remove('playing');
+    });
+  }
+
+  function pauseMusic() {
+    if (!bgMusic) return;
+    bgMusic.pause();
+    isPlaying = false;
+    if (floatingMusicBtn) floatingMusicBtn.classList.remove('playing');
+  }
+
+  function toggleMusic() {
+    if (isPlaying) {
+      pauseMusic();
+    } else {
+      playMusic();
+    }
+  }
+
+  if (floatingMusicBtn) {
+    floatingMusicBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMusic();
+    });
+  }
+
+  // Attempt audio start on first global interaction
+  const enableAudioOnGesture = () => {
+    if (!isPlaying && bgMusic && bgMusic.paused) {
+      playMusic();
+    }
+    window.removeEventListener('click', enableAudioOnGesture);
+    window.removeEventListener('touchstart', enableAudioOnGesture);
   };
+  window.addEventListener('click', enableAudioOnGesture, { once: true });
+  window.addEventListener('touchstart', enableAudioOnGesture, { once: true });
 
   // =========================================================================
-  // 2. ENVELOPE OPENING ANIMATION & AUDIO PLAYBACK
+  // 2. Landing Envelope Interaction (Wax Seal & Polaroid)
   // =========================================================================
-  function initEnvelopeOpening() {
-    const envelopeScreen = document.getElementById('envelopeScreen');
-    const openBtn = document.getElementById('openInvitationBtn');
-    const waxSealBtn = document.getElementById('waxSealBtn');
-    const audioEl = document.getElementById('weddingAudio');
-    const musicBtn = document.getElementById('musicToggleBtn');
+  const waxSealBtn = document.getElementById('waxSealBtn');
+  const polaroidCard = document.getElementById('polaroidCard');
+  const namesHeader = document.getElementById('namesHeader');
 
-    if (!envelopeScreen) return;
-
-    let hasOpened = false;
-
-    function openEnvelope() {
-      if (hasOpened) return;
-      hasOpened = true;
-
-      // 1. Golden Sparkle Burst
-      const rect = (waxSealBtn || openBtn).getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      createSparkleBurst(centerX, centerY);
-
-      // 2. Dissolve Envelope Screen
-      envelopeScreen.classList.add('is-opened');
-
-      // 3. Attempt to play background music on user gesture
-      if (audioEl) {
-        audioEl.play().then(() => {
-          if (musicBtn) musicBtn.classList.add('playing');
-        }).catch((err) => {
-          console.log('Autoplay audio note:', err);
-        });
+  function openEnvelope() {
+    if (polaroidCard) {
+      polaroidCard.classList.add('opened');
+    }
+    // Start music if not started
+    if (!isPlaying) {
+      playMusic();
+    }
+    // Smooth scroll down to main content after a slight delay for animation
+    setTimeout(() => {
+      if (namesHeader) {
+        namesHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    }, 600);
+  }
 
-      // 4. Smooth scroll to top of main website
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    if (openBtn) openBtn.addEventListener('click', openEnvelope);
-    if (waxSealBtn) waxSealBtn.addEventListener('click', openEnvelope);
-
-    // Auto open if URL has ?open=1 like ChungDoi
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('open') === '1') {
-      setTimeout(openEnvelope, 400);
-    }
+  if (waxSealBtn) {
+    waxSealBtn.addEventListener('click', openEnvelope);
+  }
+  if (polaroidCard) {
+    polaroidCard.addEventListener('click', openEnvelope);
   }
 
   // =========================================================================
-  // 3. GOLDEN SPARKLE BURST GENERATOR
+  // 3. Official Invitation Card Lightbox Zoom
   // =========================================================================
-  function createSparkleBurst(x, y) {
-    const container = document.getElementById('sparkleBurstContainer');
-    if (!container) return;
+  const officialCardTrigger = document.getElementById('officialCardTrigger');
+  const cardLightbox = document.getElementById('cardLightbox');
+  const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+  const closeLightboxBackdrop = document.getElementById('closeLightboxBackdrop');
 
-    const count = 40;
-    for (let i = 0; i < count; i++) {
-      const p = document.createElement('div');
-      p.className = 'sparkle-particle';
-
-      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
-      const distance = Math.random() * 200 + 70;
-      const tx = Math.cos(angle) * distance;
-      const ty = Math.sin(angle) * distance;
-      const duration = Math.random() * 1.0 + 0.7;
-      const size = Math.random() * 6 + 4;
-
-      p.style.left = x + 'px';
-      p.style.top = y + 'px';
-      p.style.width = size + 'px';
-      p.style.height = size + 'px';
-      p.style.transition = `all ${duration}s cubic-bezier(0.16, 1, 0.3, 1)`;
-
-      container.appendChild(p);
-
-      requestAnimationFrame(() => {
-        p.style.transform = `translate(${tx}px, ${ty}px) scale(0)`;
-        p.style.opacity = '0';
-      });
-
-      setTimeout(() => {
-        if (p.parentNode) p.parentNode.removeChild(p);
-      }, duration * 1000);
-    }
-  }
-
-  // =========================================================================
-  // 4. AMBIENT FALLING HEARTS & ROSE PETALS CANVAS (CHUNGDOI SIGNATURE)
-  // =========================================================================
-  function initAmbientCanvas() {
-    const canvas = document.getElementById('ambientCanvas');
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    window.addEventListener('resize', function () {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }, { passive: true });
-
-    const particleCount = window.innerWidth < 768 ? 16 : 26;
-    const particles = [];
-
-    // ChungDoi colors: Burgundy (#a8323b), Gold (#c9a24a), Soft Ivory (#ece4d8)
-    const particleColors = [
-      { r: 168, g: 50, b: 59, a: 0.75, type: 'heart' },
-      { r: 201, g: 162, b: 74, a: 0.7, type: 'heart' },
-      { r: 236, g: 228, b: 216, a: 0.65, type: 'petal' },
-      { r: 122, g: 31, b: 38, a: 0.75, type: 'heart' },
-      { r: 197, g: 165, b: 132, a: 0.65, type: 'petal' }
-    ];
-
-    class AmbientParticle {
-      constructor() {
-        this.reset(true);
-      }
-
-      reset(initial) {
-        this.x = Math.random() * width;
-        this.y = initial ? Math.random() * height : -30;
-        this.size = Math.random() * 8 + 10;
-        this.speedY = Math.random() * 0.8 + 0.45;
-        this.speedX = Math.random() * 0.6 - 0.3;
-        this.angle = Math.random() * Math.PI * 2;
-        this.spin = (Math.random() - 0.5) * 0.02;
-        this.sway = Math.random() * 20 + 10;
-        this.swaySpeed = Math.random() * 0.02 + 0.01;
-        this.swayAngle = Math.random() * Math.PI * 2;
-        this.config = particleColors[Math.floor(Math.random() * particleColors.length)];
-      }
-
-      update() {
-        this.y += this.speedY;
-        this.angle += this.spin;
-        this.swayAngle += this.swaySpeed;
-        this.x += this.speedX + Math.sin(this.swayAngle) * 0.5;
-
-        if (this.y > height + 35 || this.x < -40 || this.x > width + 40) {
-          this.reset(false);
-        }
-      }
-
-      draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-
-        ctx.fillStyle = `rgba(${this.config.r}, ${this.config.g}, ${this.config.b}, ${this.config.a})`;
-
-        if (this.config.type === 'heart') {
-          // Draw miniature heart
-          const s = this.size * 0.6;
-          ctx.beginPath();
-          ctx.moveTo(0, s * 0.3);
-          ctx.bezierCurveTo(-s * 0.5, -s * 0.4, -s, s * 0.2, 0, s);
-          ctx.bezierCurveTo(s, s * 0.2, s * 0.5, -s * 0.4, 0, s * 0.3);
-          ctx.fill();
-        } else {
-          // Draw soft curved petal
-          const s = this.size * 0.7;
-          ctx.beginPath();
-          ctx.moveTo(0, -s);
-          ctx.quadraticCurveTo(s * 0.6, 0, 0, s);
-          ctx.quadraticCurveTo(-s * 0.6, 0, 0, -s);
-          ctx.fill();
-        }
-
-        ctx.restore();
-      }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new AmbientParticle());
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-      }
-      requestAnimationFrame(animate);
-    }
-
-    requestAnimationFrame(animate);
-  }
-
-  // =========================================================================
-  // 5. LIVE COUNTDOWN TIMER (JANUARY 11, 2027)
-  // =========================================================================
-  function initCountdown() {
-    const timerContainer = document.getElementById('countdownTimer');
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-
-    if (!timerContainer || !daysEl || !hoursEl || !minutesEl || !secondsEl) return;
-
-    const targetDateStr = timerContainer.getAttribute('data-target-date') || WEDDING_CONFIG.targetDate;
-    const targetDate = new Date(targetDateStr).getTime();
-
-    function updateTimer() {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        daysEl.textContent = '00';
-        hoursEl.textContent = '00';
-        minutesEl.textContent = '00';
-        secondsEl.textContent = '00';
-        return;
-      }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      daysEl.textContent = String(days).padStart(2, '0');
-      hoursEl.textContent = String(hours).padStart(2, '0');
-      minutesEl.textContent = String(minutes).padStart(2, '0');
-      secondsEl.textContent = String(seconds).padStart(2, '0');
-    }
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
-  }
-
-  // =========================================================================
-  // 6. PHOTO GALLERY & LIGHTBOX MODAL
-  // =========================================================================
-  function initGalleryLightbox() {
-    const modal = document.getElementById('galleryLightboxModal');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const counterEl = document.getElementById('lightboxCounter');
-    const closeBtn = document.getElementById('lightboxCloseBtn');
-    const prevBtn = document.getElementById('lightboxPrevBtn');
-    const nextBtn = document.getElementById('lightboxNextBtn');
-    const backdrop = document.getElementById('lightboxBackdrop');
-    const galleryCards = document.querySelectorAll('.gallery-card');
-    const viewOriginalBtn = document.getElementById('viewOriginalCardBtn');
-
-    if (!modal || !lightboxImg) return;
-
-    let currentIndex = 0;
-    const images = WEDDING_CONFIG.galleryImages;
-
-    function openLightbox(index) {
-      currentIndex = index;
-      updateLightboxContent();
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
+  function openLightbox() {
+    if (cardLightbox) {
+      cardLightbox.classList.add('open');
+      cardLightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
+  }
 
-    function closeLightbox() {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
+  function closeLightbox() {
+    if (cardLightbox) {
+      cardLightbox.classList.remove('open');
+      cardLightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
+  }
 
-    function updateLightboxContent() {
-      if (currentIndex === -1) {
-        // Printed wedding card view
-        lightboxImg.src = WEDDING_CONFIG.printedCardImage;
-        lightboxImg.alt = 'Official Printed Wedding Invitation Card';
-        if (counterEl) counterEl.textContent = 'Invitation Card';
-        if (prevBtn) prevBtn.style.display = 'none';
-        if (nextBtn) nextBtn.style.display = 'none';
-        return;
+  if (officialCardTrigger) officialCardTrigger.addEventListener('click', openLightbox);
+  if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeLightbox);
+  if (closeLightboxBackdrop) closeLightboxBackdrop.addEventListener('click', closeLightbox);
+
+  // =========================================================================
+  // 4. Live Countdown Timer (Exact ChungDoi Format)
+  // =========================================================================
+  const liveCountdownText = document.getElementById('liveCountdownText');
+  // Target: Monday, January 11, 2027 at 19:00:00 (7:00 PM IST)
+  const targetDate = new Date('2027-01-11T19:00:00+05:30').getTime();
+
+  function updateCountdown() {
+    if (!liveCountdownText) return;
+
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+      liveCountdownText.textContent = "Today is the Celebration Day!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Exact ChungDoi format: "100 days 6 hours 22 min 29 sec"
+    liveCountdownText.textContent = `${days} days ${hours} hours ${minutes} min ${seconds} sec`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // =========================================================================
+  // 5. Photo Gallery 3D Coverflow Carousel (6 photos including uploaded ones)
+  // =========================================================================
+  const cards = document.querySelectorAll('.carousel-card');
+  const dots = document.querySelectorAll('.carousel-dots .dot');
+  const prevBtn = document.getElementById('galleryPrevBtn');
+  const nextBtn = document.getElementById('galleryNextBtn');
+  const carouselViewport = document.querySelector('.carousel-viewport');
+
+  let currentIndex = 0;
+  const totalCards = cards.length;
+
+  function updateGalleryClasses() {
+    cards.forEach((card, i) => {
+      card.className = 'carousel-card';
+      const offset = (i - currentIndex + totalCards) % totalCards;
+
+      if (offset === 0) {
+        card.classList.add('active');
+      } else if (offset === 1) {
+        card.classList.add('next');
+      } else if (offset === totalCards - 1) {
+        card.classList.add('prev');
+      } else if (offset < totalCards / 2) {
+        card.classList.add('hidden-right');
+      } else {
+        card.classList.add('hidden-left');
       }
-
-      if (prevBtn) prevBtn.style.display = '';
-      if (nextBtn) nextBtn.style.display = '';
-
-      const currentItem = images[currentIndex];
-      lightboxImg.src = currentItem.src;
-      lightboxImg.alt = currentItem.alt;
-      if (counterEl) {
-        counterEl.textContent = `${currentIndex + 1} / ${images.length}`;
-      }
-    }
-
-    function showNext() {
-      if (currentIndex === -1) currentIndex = 0;
-      else currentIndex = (currentIndex + 1) % images.length;
-      updateLightboxContent();
-    }
-
-    function showPrev() {
-      if (currentIndex === -1) currentIndex = 0;
-      else currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateLightboxContent();
-    }
-
-    galleryCards.forEach((card, idx) => {
-      card.addEventListener('click', () => openLightbox(idx));
     });
 
-    if (viewOriginalBtn) {
-      viewOriginalBtn.addEventListener('click', () => openLightbox(-1));
+    // Update dots
+    dots.forEach((dot, idx) => {
+      if (idx === currentIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function goToSlide(idx) {
+    currentIndex = (idx + totalCards) % totalCards;
+    updateGalleryClasses();
+  }
+
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentIndex - 1);
+  }
+
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+  // Allow clicking on side card to navigate to it
+  cards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      if (card.classList.contains('next')) {
+        nextSlide();
+      } else if (card.classList.contains('prev')) {
+        prevSlide();
+      }
+    });
+  });
+
+  // Dot click
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      const targetIdx = parseInt(e.target.dataset.dot, 10);
+      goToSlide(targetIdx);
+    });
+  });
+
+  // Touch Swipe for Mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (carouselViewport) {
+    carouselViewport.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carouselViewport.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  }
+
+  function handleSwipe() {
+    const swipeDistance = touchEndX - touchStartX;
+    if (Math.abs(swipeDistance) > 40) {
+      if (swipeDistance < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
     }
+  }
 
-    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-    if (backdrop) backdrop.addEventListener('click', closeLightbox);
-    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
-    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+  // Initial layout
+  updateGalleryClasses();
 
-    document.addEventListener('keydown', function (e) {
-      if (!modal.classList.contains('active')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
+  // =========================================================================
+  // 6. Add to Calendar (iCalendar .ics Download & Google Calendar Link)
+  // =========================================================================
+  const addToCalendarLink = document.getElementById('addToCalendarLink');
+
+  if (addToCalendarLink) {
+    addToCalendarLink.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const icsData = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Roshan and Elvisha//Wedding Invitation//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:roshan-elvisha-wedding-20270111@wedding',
+        'DTSTAMP:20261003T120000Z',
+        'DTSTART:20270111T113000Z', // 5:00 PM IST (UTC + 5:30)
+        'DTEND:20270111T173000Z',   // 11:00 PM IST
+        'SUMMARY:Wedding of Roshan Glatvin Lobo & Elvisha Dsouza',
+        'DESCRIPTION:Wedding Nuptials at 5:00 PM followed by Reception at 7:00 PM at Mother of God Church, Mogarnad.',
+        'LOCATION:Mother of God Church, Mogarnad, Karnataka, India',
+        'STATUS:CONFIRMED',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(blob);
+      downloadLink.setAttribute('download', 'Roshan-Elvisha-Wedding.ics');
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
     });
   }
 
   // =========================================================================
-  // 7. RSVP FORM SUBMISSION
+  // 7. RSVP Modal Dialog
   // =========================================================================
-  function initRSVP() {
-    const form = document.getElementById('rsvpForm');
-    const successMsg = document.getElementById('rsvpSuccessMessage');
-    const submitBtn = document.getElementById('rsvpSubmitBtn');
+  const openRsvpBtn = document.getElementById('openRsvpBtn');
+  const closeRsvpBtn = document.getElementById('closeRsvpBtn');
+  const rsvpModal = document.getElementById('rsvpModal');
+  const rsvpForm = document.getElementById('rsvpForm');
+  const rsvpSuccess = document.getElementById('rsvpSuccess');
+  const guestCountGroup = document.getElementById('guestCountGroup');
 
-    if (!form || !successMsg) return;
+  function openModal() {
+    if (rsvpModal) {
+      rsvpModal.classList.add('open');
+      rsvpModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
 
-    form.addEventListener('submit', function (e) {
+  function closeModal() {
+    if (rsvpModal) {
+      rsvpModal.classList.remove('open');
+      rsvpModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (openRsvpBtn) openRsvpBtn.addEventListener('click', openModal);
+  if (closeRsvpBtn) closeRsvpBtn.addEventListener('click', closeModal);
+
+  if (rsvpModal) {
+    rsvpModal.addEventListener('click', (e) => {
+      if (e.target === rsvpModal) {
+        closeModal();
+      }
+    });
+  }
+
+  // Toggle guest count dropdown based on attendance selection
+  const attendingRadios = document.querySelectorAll('input[name="attending"]');
+  attendingRadios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      if (guestCountGroup) {
+        if (e.target.value === 'no') {
+          guestCountGroup.style.display = 'none';
+        } else {
+          guestCountGroup.style.display = 'flex';
+        }
+      }
+    });
+  });
+
+  // Handle Form Submission
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const guestName = form.guestName.value.trim();
-      const attendance = form.attendance.value;
-      const guestCount = form.guestCount ? form.guestCount.value : '1';
-      const message = form.guestMessage.value.trim();
-
-      const rsvpData = {
-        name: guestName,
-        attendance: attendance,
-        guests: guestCount,
-        message: message,
+      const formData = {
+        name: document.getElementById('guestName')?.value || '',
+        phone: document.getElementById('guestPhone')?.value || '',
+        attending: document.querySelector('input[name="attending"]:checked')?.value || 'yes',
+        guests: document.getElementById('guestCount')?.value || '1',
+        message: document.getElementById('guestMessage')?.value || '',
         submittedAt: new Date().toISOString()
       };
 
-      // Save locally
       try {
-        const stored = JSON.parse(localStorage.getItem('wedding_rsvp') || '[]');
-        stored.push(rsvpData);
-        localStorage.setItem('wedding_rsvp', JSON.stringify(stored));
+        localStorage.setItem('roshan_elvisha_rsvp', JSON.stringify(formData));
       } catch (err) {
-        console.log('Storage note:', err);
+        console.warn('LocalStorage save error:', err);
       }
 
-      // Animate success
-      if (submitBtn) {
-        submitBtn.style.display = 'none';
+      // Show success screen
+      rsvpForm.style.display = 'none';
+      if (rsvpSuccess) {
+        rsvpSuccess.style.display = 'block';
       }
-      successMsg.style.display = 'block';
-      successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Auto close after 3 seconds
+      setTimeout(() => {
+        closeModal();
+        setTimeout(() => {
+          rsvpForm.reset();
+          rsvpForm.style.display = 'flex';
+          if (rsvpSuccess) rsvpSuccess.style.display = 'none';
+        }, 500);
+      }, 2800);
     });
   }
 
-  // =========================================================================
-  // 8. BACKGROUND MUSIC CONTROLLER
-  // =========================================================================
-  function initMusicController() {
-    const audioEl = document.getElementById('weddingAudio');
-    const musicBtn = document.getElementById('musicToggleBtn');
-    let isPlaying = false;
-
-    if (!musicBtn || !audioEl) return;
-
-    musicBtn.addEventListener('click', function () {
-      if (!isPlaying) {
-        audioEl.play().then(() => {
-          isPlaying = true;
-          musicBtn.classList.add('playing');
-        }).catch((err) => {
-          console.log('Audio playback note:', err);
-        });
-      } else {
-        audioEl.pause();
-        isPlaying = false;
-        musicBtn.classList.remove('playing');
-      }
-    });
-
-    audioEl.addEventListener('play', () => {
-      isPlaying = true;
-      musicBtn.classList.add('playing');
-    });
-
-    audioEl.addEventListener('pause', () => {
-      isPlaying = false;
-      musicBtn.classList.remove('playing');
-    });
-  }
-
-  // =========================================================================
-  // 9. MOBILE NAVIGATION & SCROLLSPY
-  // =========================================================================
-  function initNavigation() {
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const navMenu = document.getElementById('navMenu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbar = document.getElementById('navbar');
-
-    if (hamburgerBtn && navMenu) {
-      hamburgerBtn.addEventListener('click', function () {
-        const isOpen = navMenu.classList.toggle('open');
-        hamburgerBtn.classList.toggle('active', isOpen);
-        hamburgerBtn.setAttribute('aria-expanded', isOpen);
-      });
-
-      navLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          navMenu.classList.remove('open');
-          hamburgerBtn.classList.remove('active');
-          hamburgerBtn.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      document.addEventListener('click', function (e) {
-        if (navMenu.classList.contains('open') &&
-            !navMenu.contains(e.target) &&
-            !hamburgerBtn.contains(e.target)) {
-          navMenu.classList.remove('open');
-          hamburgerBtn.classList.remove('active');
-          hamburgerBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-
-    // Navbar scrolled shadow
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 40) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    }, { passive: true });
-
-    // Active link scrollspy
-    const sections = document.querySelectorAll('section[id]');
-    function updateActiveLink() {
-      const scrollPos = window.pageYOffset + 120;
-      sections.forEach(function (section) {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
-        const link = document.querySelector(`.nav-link[href="#${id}"]`);
-
-        if (scrollPos >= top && scrollPos < top + height) {
-          navLinks.forEach(l => l.classList.remove('active'));
-          if (link) link.classList.add('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', updateActiveLink, { passive: true });
-    updateActiveLink();
-  }
-
-  // =========================================================================
-  // 10. SCROLL REVEAL (INTERSECTION OBSERVER)
-  // =========================================================================
-  function initScrollReveal() {
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-      elements.forEach(el => observer.observe(el));
-    } else {
-      elements.forEach(el => el.classList.add('is-revealed'));
-    }
-  }
-
-  // =========================================================================
-  // 11. STRICT SINGLE-LINE COUPLE NAME FITTER
-  // =========================================================================
-  function initSingleLineNameFitter() {
-    const el = document.getElementById('coupleSingleLineNames');
-    if (!el || !el.parentElement) return;
-
-    function fit() {
-      el.style.fontSize = ''; // reset to CSS clamp
-      const parent = el.parentElement;
-      const maxWidth = parent.clientWidth - 16;
-      if (maxWidth > 0 && el.scrollWidth > maxWidth) {
-        const computedSize = parseFloat(window.getComputedStyle(el).fontSize);
-        const ratio = maxWidth / el.scrollWidth;
-        el.style.fontSize = Math.max(13, Math.floor(computedSize * ratio * 0.98)) + 'px';
-      }
-    }
-
-    fit();
-    window.addEventListener('resize', fit, { passive: true });
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(fit);
-    }
-  }
-
-  // =========================================================================
-  // 12. INITIALIZATION ON DOM READY
-  // =========================================================================
-  document.addEventListener('DOMContentLoaded', function () {
-    initEnvelopeOpening();
-    initAmbientCanvas();
-    initCountdown();
-    initGalleryLightbox();
-    initRSVP();
-    initMusicController();
-    initNavigation();
-    initScrollReveal();
-    initSingleLineNameFitter();
-  });
-
-})();
+});
