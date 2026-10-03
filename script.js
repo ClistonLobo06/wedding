@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // =========================================================================
-  // 5. Photo Gallery 3D Coverflow Carousel (6 photos including uploaded ones)
+  // 5. Photo Gallery 3D Coverflow Carousel (4 photos including uploaded ones)
   // =========================================================================
   const cards = document.querySelectorAll('.carousel-card');
   const dots = document.querySelectorAll('.carousel-dots .dot');
@@ -373,21 +373,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Handle Form Submission
+  // Handle Form Submission with WhatsApp integration to +91 9008705055
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const formData = {
-        name: document.getElementById('guestName')?.value || '',
-        phone: document.getElementById('guestPhone')?.value || '',
-        attending: document.querySelector('input[name="attending"]:checked')?.value || 'yes',
-        guests: document.getElementById('guestCount')?.value || '1',
-        message: document.getElementById('guestMessage')?.value || '',
-        submittedAt: new Date().toISOString()
-      };
+      const name = document.getElementById('guestName')?.value.trim() || '';
+      const phone = document.getElementById('guestPhone')?.value.trim() || '';
+      const attending = document.querySelector('input[name="attending"]:checked')?.value || 'yes';
+      const guests = document.getElementById('guestCount')?.value || '1';
+      const message = document.getElementById('guestMessage')?.value.trim() || '';
 
+      const attendanceStatus = attending === 'yes' ? 'Joyfully Accept ♡' : 'Regretfully Decline';
+
+      let whatsappText = `*Wedding Attendance Confirmation*\n`;
+      whatsappText += `💍 *Roshan & Elvisha's Wedding* (January 11, 2027)\n\n`;
+      whatsappText += `👤 *Guest Name:* ${name}\n`;
+      if (phone) {
+        whatsappText += `📞 *Phone:* ${phone}\n`;
+      }
+      whatsappText += `✨ *Attendance:* ${attendanceStatus}\n`;
+      if (attending === 'yes') {
+        whatsappText += `👥 *Number of Guests:* ${guests}\n`;
+      }
+      if (message) {
+        whatsappText += `💌 *Wishes:* ${message}\n`;
+      }
+
+      // Save locally as backup
       try {
+        const formData = {
+          name,
+          phone,
+          attending,
+          guests,
+          message,
+          submittedAt: new Date().toISOString()
+        };
         localStorage.setItem('roshan_elvisha_rsvp', JSON.stringify(formData));
       } catch (err) {
         console.warn('LocalStorage save error:', err);
@@ -399,7 +421,16 @@ document.addEventListener('DOMContentLoaded', () => {
         rsvpSuccess.style.display = 'block';
       }
 
-      // Auto close after 3 seconds
+      // Open WhatsApp to +91 9008705055
+      const whatsappNumber = '919008705055';
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
+
+      // Open WhatsApp
+      setTimeout(() => {
+        window.open(whatsappUrl, '_blank');
+      }, 700);
+
+      // Auto close modal after 3.8 seconds
       setTimeout(() => {
         closeModal();
         setTimeout(() => {
@@ -407,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
           rsvpForm.style.display = 'flex';
           if (rsvpSuccess) rsvpSuccess.style.display = 'none';
         }, 500);
-      }, 2800);
+      }, 3800);
     });
   }
 

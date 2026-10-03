@@ -1832,6 +1832,10 @@ body.entrance-locked {
   margin-top: 6px;
   box-shadow: 0 4px 14px rgba(74, 13, 21, 0.3);
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .modal-submit-btn:hover {
