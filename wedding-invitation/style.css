@@ -225,7 +225,7 @@ body.chungdoi-theme {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 2%; /* Crucial: positions view on faces and eyes */
+  object-position: center 8%; /* Positions view on faces and smiles with natural headroom */
   display: block;
 }
 
