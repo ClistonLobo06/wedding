@@ -1,115 +1,110 @@
-# Roshan & Elvisha — Luxury Wedding Invitation Website
+# 💍 Roshan & Elvisha — Digital Wedding Invitation Website
 
 A luxury digital wedding invitation website built with pure **HTML5, Vanilla CSS3, and JavaScript**. 
 
-Designed with a color palette of royal ivory, gold foil gradients, deep crimson/burgundy velvet accents, floating rose petals, and traditional wedding flourishes.
+Designed in the signature ChungDoi minimalist deep burgundy / dark red palette, featuring interactive envelope animations, ambient romantic background music, an official card lightbox, 3D photo gallery, live countdown, and direct WhatsApp attendance confirmation.
 
-> **Important**: This website is exclusively focused on the **Wedding Ceremony**. It contains **no** RSVP, Haldi, Mehendi, Sangeet, Reception, or Our Story sections.
+---
+
+## 📅 Wedding Details
+
+* **Groom:** Roshan Glatvin Lobo
+* **Bride:** Elvisha Dsouza
+* **Date:** Monday, January 11, 2027
+* **Wedding Nuptial Ceremony:** 5:00 PM
+* **Reception:** 7:00 PM
+* **Venue:** Mother of God Church, Mogarnad, Karnataka, India
+* **RSVP Phone (WhatsApp):** +91 9008705055
+
+---
+
+## ✨ Features
+
+* **🚪 Fullscreen Entrance Gate Screen**:
+  * Atmospheric keepsake greeting card with animated ambient floating hearts.
+  * Burgundy wax seal and illuminated "Open" button to enter the invitation and start romantic music.
+
+* **💌 Interactive Velvet Envelope**:
+  * Realistic deep-burgundy fold flaps and an embossed golden wax seal (`Click to Open`).
+  * Smooth pull-out polaroid portrait animation.
+
+* **🎵 Background Music Player**:
+  * Plays romantic background music (*Ed Sheeran - Perfect*).
+  * Floating music toggle button with animated sound equalizer bars.
+
+* **⛪ Ceremony & Reception Details**:
+  * Side-by-side family and parents' blessing blocks.
+  * Clearly highlighted ceremony time (5:00 PM) and reception time (7:00 PM).
+
+* **📜 Official Printed Invitation Card with Lightbox**:
+  * Dedicated preview frame of the printed invitation card.
+  * Tap or click to zoom into an interactive high-resolution fullscreen lightbox.
+
+* **🖼️ 3D Perspective Photo Gallery**:
+  * Smooth 3D coverflow carousel cycling through curated couple photographs.
+  * Supports arrow navigation, touch swipe for mobile phones, and pagination dot indicators.
+
+* **⏳ Live Countdown Timer & January 2027 Calendar**:
+  * Real-time Days, Hours, Minutes, and Seconds countdown to January 11, 2027.
+  * Custom mini-calendar widget highlighting the wedding date (Jan 11) with a burgundy heart badge.
+  * "Add to Calendar" button (downloads `.ics` iCalendar event compatible with Apple, Google, and Outlook).
+
+* **💬 Instant WhatsApp Attendance Confirmation (RSVP)**:
+  * Interactive modal dialog to collect guest name, phone number, attendance status (*Joyfully Accept ♡* / *Regretfully Decline*), guest headcount, and heartfelt wishes.
+  * Automatically formats and sends the response directly via WhatsApp to **+91 9008705055**.
+  * Saves an offline backup in browser `localStorage`.
+
+* **🗺️ Interactive Venue Location**:
+  * Google Maps embedded navigation preview for Mother of God Church, Mogarnad.
+  * One-tap "Get Directions" link opening the location in Google Maps.
+
+* **👔 Dress Code Section**:
+  * Party attire guidance featuring elegant swatches in Burgundy, Champagne, and White.
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-wedding-invitation/
-├── index.html            # Main HTML with clearly commented editable wedding details block
-├── style.css             # Luxury design system, responsive styles & wedding reveal animations
-├── script.js             # Live countdown timer, falling petals canvas, sparkle burst & audio controller
-├── images/
-│   ├── couple.jpg        # Bride & Groom together photo (Roshan & Elvisha)
-│   ├── couple-full.jpg   # High-resolution standing photo
-│   ├── wedding-card.jpg  # The official printed wedding invitation card photograph
-│   ├── bride.jpg         # Bride portrait (Elvisha)
-│   └── groom.jpg         # Groom portrait (Roshan)
+wedding/
 ├── audio/
-│   └── wedding-music.mp3 # Romantic wedding melody
-└── README.md             # Documentation & Vercel deployment guide
+│   └── wedding-music.mp3       # Ed Sheeran - Perfect background track
+├── images/
+│   ├── chungdoi_2.jpg          # Couple portrait (envelope polaroid & gallery)
+│   ├── chungdoi_3.jpg          # Couple in red attire (gallery)
+│   ├── chungdoi_4.jpg          # Outdoor couple portrait (gallery)
+│   ├── church-bg.jpg           # Architectural watermark backdrop
+│   ├── couple.jpg              # Couple cover photo (gallery slide 0)
+│   ├── flower-decoration.webp  # Floral corner embellishments
+│   ├── gold-wax-seal.png       # Golden wax seal badge
+│   └── wedding-card.jpg        # Official printed invitation card
+├── .gitignore                  # Git ignore rules
+├── index.html                  # Main semantic HTML structure
+├── README.md                   # Project documentation
+├── script.js                   # Interactive logic, 3D gallery, countdown & WhatsApp RSVP
+└── style.css                   # Custom luxury design system & responsive styling
 ```
 
 ---
 
-## ✨ Features
+## 🚀 Deployment & Local Preview
 
-* **Bride & Groom Together Picture**:
-  * Features the couple together in a single royal gold filigree arch frame.
-  * Tagged with *"✦ Happily Ever After ✦"* and *"Two Souls, One Bond • Forever Together"*.
-  * No awkward split photos — showcases their genuine warmth and joy together.
-
-* **Bride & Groom Together Picture**:
-  * Features the couple together in a single royal gold filigree arch frame.
-  * Tagged with *"✦ Happily Ever After ✦"* and *"Two Souls, One Bond • Forever Together"*.
-  * No awkward split photos — showcases their genuine warmth and joy together.
-
-* **3D Royal Gatefold Keepsake Box Opening Experience**:
-  * The wedding invitation card is exclusively revealed when clicking **"Open Invitation"** (in the Hero or Save The Date section).
-  * No static card photo sitting down on the page.
-  * Breathtaking royal opening animation:
-    1. **Wax Seal & Ribbon**: Golden wax seal (`R & E • 11.01`) splits open with an explosion of radiant golden sparkles and light particles.
-    2. **3D Royal Gates**: Left and right French velvet doors embossed with gold foil mandalas swing open outward in 3D perspective (`rotateY(-118deg)` and `rotateY(118deg)`).
-    3. **Card Elevation**: The official printed wedding invitation card smoothly elevates forward from the silk lining (`translateZ(40px)`).
-    4. **Foil Shimmer Sweep**: A diagonal beam of prismatic gold light washes across the invitation card.
-    5. **Action Controls**: "Zoom Fullscreen" for high-resolution inspection, and "Replay Opening" to watch the magical animation again.
-
-* **Save The Date & Live Countdown Timer**:
-  * Real-time Days, Hours, Minutes, and Seconds countdown to **11 January 2027, 11:00 AM**.
-  * Dedicated "Open Wedding Invitation" action button.
-  * Shows *"Today is our Wedding Day! ❤️"* when the wedding date arrives.
-
-* **Venue & Google Maps**:
-  * Grand palace illustration crest.
-  * Clearly marked **"View Location"** button linking directly to Google Maps in a new tab.
-  * Embedded Google Maps orientation preview.
-
-* **Romantic Message & Closing**:
-  * *"Two hearts, one beautiful journey. Your presence and blessings will make our special day even more meaningful."*
-  * Final celebratory closing with floral flourishes.
-
-* **Floating Music Player**:
-  * `♫ Music` button (plays `audio/wedding-music.mp3`).
-  * Conforms to modern browser policies: **No autoplay**.
-  * Equalizer wave animation when playing.
-  * Built-in Web Audio API romantic melody synthesizer fallback for offline local file viewing.
-
-* **Atmospheric Visuals**:
-  * Falling crimson velvet and golden petals canvas animation.
-  * 100% mobile-first responsive design with hamburger menu and zero horizontal overflow.
-
----
-
-## ✏️ How to Edit Wedding Details
-
-All customizable settings are placed in one prominent block at the very top of `index.html`:
-
-```html
-<!-- ================================================================ -->
-<!-- ===== EDIT WEDDING DETAILS HERE ================================ -->
-<!-- ================================================================ -->
-<!-- 1. GROOM NAME:     Roshan Lobo                                   -->
-<!-- 2. BRIDE NAME:     Elvisha Dsouza                                -->
-<!-- 3. WEDDING DATE:   Monday, 11 January 2027                       -->
-<!-- 4. WEDDING TIME:   11:00 AM onwards                              -->
-<!-- 5. COUNTDOWN ISO:  2027-01-11T11:00:00 (used for live timer)     -->
-<!-- 6. VENUE NAME:     The Grand Palace                              -->
-<!-- 7. VENUE ADDRESS:  Mangalore, Karnataka, India                   -->
-<!-- 8. GOOGLE MAPS:    https://maps.google.com/?q=...                -->
-<!-- 9. COUPLE PHOTO:   images/couple.jpg                             -->
-<!-- 10. INVITATION PIC:images/wedding-card.jpg                       -->
-<!-- 11. MUSIC FILE:    audio/wedding-music.mp3                       -->
-<!-- ================================================================ -->
+### Running Locally
+Simply open `index.html` in any web browser, or use a local static server:
+```bash
+# Using VS Code Live Server extension or Python:
+python -m http.server 8000
 ```
 
----
-
-## ⚡ Vercel-Ready Deployment
-
-This project requires zero build commands or framework adapters.
-
-### Deploy via GitHub
-1. Push this folder to a GitHub repository.
-2. Go to [Vercel Dashboard](https://vercel.com/dashboard) and click **"Add New..." -> "Project"**.
-3. Import your repository.
-4. Leave **Framework Preset** as **Other** (Vercel automatically detects static HTML/CSS/JS).
-5. Click **Deploy**. Your website is immediately live worldwide with a free HTTPS URL!
+### Deploying to GitHub Pages or Vercel
+1. Push all files to your GitHub repository:
+   ```bash
+   git add -A
+   git commit -m "feat: complete wedding invitation website"
+   git push origin main
+   ```
+2. **Vercel**: Import the GitHub repo — Vercel detects static HTML/CSS/JS with zero configuration required.
+3. **GitHub Pages**: Go to **Repository Settings -> Pages -> Source: Deploy from branch (main / root)**.
 
 ---
 
